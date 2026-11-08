@@ -1,0 +1,40 @@
+[package]
+name = "kagari-android"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+
+[lib]
+name = "kagari_android"
+crate-type = ["cdylib"]
+
+[dependencies]
+log = "0.4"
+yuvutils-rs = "0.8.3"
+
+# Everything below needs Android; the pure modules (`clock`, `touch`, `pcm`, `colour`, `pick`)
+# build and test on the host without it.
+[target.'cfg(target_os = "android")'.dependencies]
+kagari-engine = { version = "=0.3.1", registry = "Suitsu31" }
+kagari-render = { version = "=0.3.1", registry = "Suitsu31" }
+kagari-archive = { version = "=0.3.1", registry = "Suitsu31" }
+winit = { version = "0.30.13", default-features = false, features = ["android-native-activity", "rwh_06"] }
+wgpu = "30.0.1"
+kira = { version = "0.12.5", default-features = false, features = ["cpal", "ogg", "vorbis", "flac", "wav", "pcm", "mp3", "aac", "isomp4", "alac"] }
+pollster = "1"
+jiff = "0.2"
+jni = "0.22.4"
+ndk-sys = { version = "0.6.0", features = ["media"] }
+android_logger = "0.15.1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+# Unoptimised symphonia, wgpu and naga make debug APKs unusable.
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kagari Simulator</string>
+    <string name="import_zip">Import ZIP</string>
+    <string name="import_folder">Import folder</string>
+    <string name="empty">No games yet. Import a game as a ZIP file or a folder.</string>
+    <string name="importing">Importing…</string>
+    <string name="import_failed_title">Cannot import the game</string>
+    <string name="import_no_game">No game.kagari was found.</string>
+    <string name="import_not_kagari">game.kagari is not a Kagari game.</string>
+    <string name="import_wrong_version">This game was built for Kagari bytecode %1$s; this simulator runs V000.</string>
+    <string name="import_io">Reading the game failed: %1$s</string>
+    <string name="delete_title">Delete %1$s?</string>
+    <string name="delete_message">The game files are removed. Its saves are kept.</string>
+    <string name="delete">Delete</string>
+    <string name="game_failed_title">The game cannot run</string>
+</resources>

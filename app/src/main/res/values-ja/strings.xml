@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kagari シミュレーター</string>
+    <string name="import_zip">ZIP を読み込む</string>
+    <string name="import_folder">フォルダーを読み込む</string>
+    <string name="empty">ゲームがありません。ZIP ファイルかフォルダーからゲームを読み込んでください。</string>
+    <string name="importing">読み込み中…</string>
+    <string name="import_failed_title">ゲームを読み込めません</string>
+    <string name="import_no_game">game.kagari が見つかりません。</string>
+    <string name="import_not_kagari">game.kagari は Kagari のゲームではありません。</string>
+    <string name="import_wrong_version">このゲームは Kagari バイトコード %1$s 用です。このシミュレーターは V000 を実行します。</string>
+    <string name="import_io">ゲームの読み込みに失敗しました: %1$s</string>
+    <string name="delete_title">%1$s を削除しますか?</string>
+    <string name="delete_message">ゲームのファイルを削除します。セーブデータは残ります。</string>
+    <string name="delete">削除</string>
+    <string name="game_failed_title">ゲームを実行できません</string>
+</resources>

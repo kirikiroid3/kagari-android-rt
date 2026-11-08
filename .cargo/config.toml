@@ -1,0 +1,4 @@
+# The private registry the Kagari crates are published to (Kellnr). Reads need no credentials.
+[registries.Suitsu31]
+index = "sparse+https://crates.suitsu31.club/api/v1/crates/"
+credential-provider = ["cargo:token"]
