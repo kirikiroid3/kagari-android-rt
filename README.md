@@ -32,6 +32,9 @@ cargo test                   # the platform-neutral modules, on the host
 Gradle runs `cargo ndk` for `arm64-v8a` and `x86_64`. A device or emulator needs Vulkan (the
 manifest requires 1.0.3) and API 29 or later. Logs: `adb logcat -s kagari:*`.
 
+Pushing a tag builds the release APK on a Blacksmith runner (`.github/workflows/release.yml`, no
+caches); it is the run's `kagari-simulator-<tag>` artifact.
+
 ## Playing
 
 Import a game with **Import** › **ZIP file** (the `game.kagari` nearest the archive root is used,

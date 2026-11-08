@@ -1,0 +1,45 @@
+name: Release APK
+
+on:
+  push:
+    tags: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    # No caching: every tag builds from scratch.
+    runs-on: blacksmith-8vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # The image's SDK lacks these; its licences are already accepted. `yes` dies of SIGPIPE.
+      - name: Install Android SDK packages
+        run: |
+          (yes || true) | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install \
+            "platforms;android-37.0" "build-tools;37.0.0" "ndk;30.0.16248370"
+
+      # The toolchain and Android targets from rust-toolchain.toml.
+      - name: Install Rust
+        run: rustup toolchain install
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --version 4.1.2 --locked
+
+      - name: Build
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Rename APK
+        run: mv app/build/outputs/apk/release/app-release.apk "kagari-simulator-$GITHUB_REF_NAME.apk"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: kagari-simulator-${{ github.ref_name }}
+          path: kagari-simulator-${{ github.ref_name }}.apk
+          if-no-files-found: error
