@@ -40,8 +40,13 @@ android {
     }
 
     // The app's own languages; drops the AndroidX translations into the ~80 others.
+    // Chinese filters by script for the app's strings and by region for AndroidX's.
     androidResources {
-        localeFilters += listOf("en", "ja")
+        localeFilters += listOf(
+            "en", "ja", "es", "pt",
+            "b+zh+Hans", "zh-rCN",
+            "b+zh+Hant", "zh-rTW", "zh-rHK",
+        )
     }
 
     compileOptions {

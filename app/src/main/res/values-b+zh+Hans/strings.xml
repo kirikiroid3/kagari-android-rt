@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kagari 模拟器</string>
+    <string name="about">关于</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_bytecode">运行由 kagari build 构建的 Kagari 字节码 V000 游戏，与桌面版运行时相同。</string>
+    <string name="more_options">更多选项</string>
+
+    <string name="empty_title">还没有游戏</string>
+    <string name="empty_body">导入由 kagari build 构建的游戏：ZIP 文件，或包含 game.kagari 及其 .kiarchive 文件的文件夹。</string>
+    <string name="game_details">%1$s · %2$s</string>
+    <string name="running">运行中</string>
+    <string name="play">开始</string>
+    <string name="resume">继续</string>
+
+    <string name="import_game">导入</string>
+    <string name="import_title">导入游戏</string>
+    <string name="import_zip">导入 ZIP</string>
+    <string name="import_folder">导入文件夹</string>
+    <string name="import_zip_title">ZIP 文件</string>
+    <string name="import_zip_summary">最靠近根目录的 game.kagari，及其同一目录下的 .kiarchive 文件</string>
+    <string name="import_folder_title">文件夹</string>
+    <string name="import_folder_summary">直接位于文件夹中的 game.kagari 和 .kiarchive 文件</string>
+    <string name="importing">正在导入…</string>
+    <string name="importing_name">正在导入 %1$s…</string>
+    <string name="imported">已导入 %1$s</string>
+    <string name="import_failed_title">无法导入游戏</string>
+    <string name="import_no_game">未找到 game.kagari。</string>
+    <string name="import_not_kagari">game.kagari 不是 Kagari 游戏。</string>
+    <string name="import_wrong_version">此游戏是为 Kagari 字节码 %1$s 构建的；本模拟器运行 V000。</string>
+    <string name="import_io">读取游戏失败：%1$s</string>
+
+    <string name="delete_title">删除 %1$s？</string>
+    <string name="delete_message">游戏文件将被删除，存档会保留。</string>
+    <string name="delete_running">游戏正在运行，将不保存直接关闭。</string>
+    <string name="delete">删除</string>
+    <string name="deleted">已删除 %1$s</string>
+
+    <string name="game_failed_title">游戏无法运行</string>
+</resources>

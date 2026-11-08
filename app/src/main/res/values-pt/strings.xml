@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simulador Kagari</string>
+    <string name="about">Sobre</string>
+    <string name="about_version">Versão %1$s</string>
+    <string name="about_bytecode">Executa jogos criados com o kagari build para o bytecode Kagari V000, assim como o ambiente de execução para desktop.</string>
+    <string name="more_options">Mais opções</string>
+
+    <string name="empty_title">Nenhum jogo ainda</string>
+    <string name="empty_body">Importe um jogo criado com o kagari build: um arquivo ZIP ou uma pasta com o game.kagari e seus arquivos .kiarchive.</string>
+    <string name="game_details">%1$s · %2$s</string>
+    <string name="running">Em execução</string>
+    <string name="play">Jogar</string>
+    <string name="resume">Continuar</string>
+
+    <string name="import_game">Importar</string>
+    <string name="import_title">Importar um jogo</string>
+    <string name="import_zip">Importar ZIP</string>
+    <string name="import_folder">Importar pasta</string>
+    <string name="import_zip_title">Arquivo ZIP</string>
+    <string name="import_zip_summary">O game.kagari mais próximo da raiz, com os arquivos .kiarchive ao lado</string>
+    <string name="import_folder_title">Pasta</string>
+    <string name="import_folder_summary">game.kagari e os arquivos .kiarchive diretamente na pasta</string>
+    <string name="importing">Importando…</string>
+    <string name="importing_name">Importando %1$s…</string>
+    <string name="imported">%1$s importado</string>
+    <string name="import_failed_title">Não é possível importar o jogo</string>
+    <string name="import_no_game">Nenhum game.kagari foi encontrado.</string>
+    <string name="import_not_kagari">game.kagari não é um jogo Kagari.</string>
+    <string name="import_wrong_version">Este jogo foi criado para o bytecode Kagari %1$s; este simulador executa V000.</string>
+    <string name="import_io">Falha ao ler o jogo: %1$s</string>
+
+    <string name="delete_title">Excluir %1$s?</string>
+    <string name="delete_message">Os arquivos do jogo são removidos. Os jogos salvos são mantidos.</string>
+    <string name="delete_running">O jogo está em execução e será fechado sem salvar.</string>
+    <string name="delete">Excluir</string>
+    <string name="deleted">%1$s excluído</string>
+
+    <string name="game_failed_title">Não é possível executar o jogo</string>
+</resources>
