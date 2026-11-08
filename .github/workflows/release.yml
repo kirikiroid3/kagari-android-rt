@@ -4,8 +4,9 @@ on:
   push:
     tags: ["**"]
 
+# Creating the release and uploading its asset.
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   apk:
@@ -43,3 +44,15 @@ jobs:
           name: kagari-simulator-${{ github.ref_name }}
           path: kagari-simulator-${{ github.ref_name }}.apk
           if-no-files-found: error
+
+      # A rerun replaces the asset of the release the first run created.
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          APK: kagari-simulator-${{ github.ref_name }}.apk
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "$APK" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "$APK" --verify-tag --title "$GITHUB_REF_NAME" --generate-notes
+          fi

@@ -33,7 +33,8 @@ Gradle runs `cargo ndk` for `arm64-v8a` and `x86_64`. A device or emulator needs
 manifest requires 1.0.3) and API 29 or later. Logs: `adb logcat -s kagari:*`.
 
 Pushing a tag builds the release APK on a Blacksmith runner (`.github/workflows/release.yml`, no
-caches); it is the run's `kagari-simulator-<tag>` artifact.
+caches) and attaches it to the tag's GitHub Release as `kagari-simulator-<tag>.apk` (also the run's
+artifact).
 
 ## Playing
 
