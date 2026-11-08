@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kagari Simulator</string>
+    <string name="about">About</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_bytecode">Plays games built by kagari build for Kagari bytecode V000, as the desktop runtime does.</string>
+    <string name="more_options">More options</string>
+
+    <string name="empty_title">No games yet</string>
+    <string name="empty_body">Import a game built by kagari build: a ZIP file or a folder with game.kagari and its .kiarchive files.</string>
+    <string name="game_details">%1$s · %2$s</string>
+    <string name="running">Running</string>
+    <string name="play">Play</string>
+    <string name="resume">Resume</string>
+
+    <string name="import_game">Import</string>
+    <string name="import_title">Import a game</string>
     <string name="import_zip">Import ZIP</string>
     <string name="import_folder">Import folder</string>
-    <string name="empty">No games yet. Import a game as a ZIP file or a folder.</string>
+    <string name="import_zip_title">ZIP file</string>
+    <string name="import_zip_summary">The game.kagari nearest the root, with the archives beside it</string>
+    <string name="import_folder_title">Folder</string>
+    <string name="import_folder_summary">game.kagari and the .kiarchive files directly in the folder</string>
     <string name="importing">Importing…</string>
+    <string name="importing_name">Importing %1$s…</string>
+    <string name="imported">Imported %1$s</string>
     <string name="import_failed_title">Cannot import the game</string>
     <string name="import_no_game">No game.kagari was found.</string>
     <string name="import_not_kagari">game.kagari is not a Kagari game.</string>
     <string name="import_wrong_version">This game was built for Kagari bytecode %1$s; this simulator runs V000.</string>
     <string name="import_io">Reading the game failed: %1$s</string>
+
     <string name="delete_title">Delete %1$s?</string>
     <string name="delete_message">The game files are removed. Its saves are kept.</string>
+    <string name="delete_running">The game is running and will be closed without saving.</string>
     <string name="delete">Delete</string>
+    <string name="deleted">Deleted %1$s</string>
+
     <string name="game_failed_title">The game cannot run</string>
 </resources>

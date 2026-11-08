@@ -55,22 +55,37 @@ class GameActivity : NativeActivity() {
         }
     }
 
-    /** Before API 33 the back key reaches Rust as a key event; the activity must not finish. */
+    /**
+     * Before API 33 the back key reaches Rust as a key event; the activity must not finish. From
+     * API 33 the `OnBackInvokedCallback` registered in [onCreate] handles back gestures instead.
+     */
     @Deprecated("Superseded by OnBackInvokedCallback on API 33+")
-    @Suppress("DEPRECATION")
+    @Suppress("DEPRECATION", "GestureBackNavigation")
     override fun onBackPressed() {}
+
+    override fun onPause() {
+        super.onPause()
+        // The launcher resumes before `onDestroy`: it must already see the game as ended.
+        if (isFinishing) {
+            clearRunning()
+        }
+    }
 
     override fun onDestroy() {
         // The event loop ends (autosaving the game) once told; `super.onDestroy` returns after
         // `android_main` has returned: the glue waits for the native thread.
         nativeOnDestroy()
         super.onDestroy()
+        clearRunning()
+        // winit allows one event loop per process: never host a second `android_main`.
+        Process.killProcess(Process.myPid())
+    }
+
+    private fun clearRunning() {
         val running = File(filesDir, RUNNING_FILE)
         if (running.exists() && running.readText() == gameDir()) {
             running.delete()
         }
-        // winit allows one event loop per process: never host a second `android_main`.
-        Process.killProcess(Process.myPid())
     }
 
     @Suppress("DEPRECATION")

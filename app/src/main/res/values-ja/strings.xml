@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kagari シミュレーター</string>
+    <string name="about">このアプリについて</string>
+    <string name="about_version">バージョン %1$s</string>
+    <string name="about_bytecode">kagari build で作られた Kagari バイトコード V000 のゲームを、デスクトップ版ランタイムと同じように実行します。</string>
+    <string name="more_options">その他のオプション</string>
+
+    <string name="empty_title">ゲームがありません</string>
+    <string name="empty_body">kagari build で作ったゲームを読み込んでください。game.kagari と .kiarchive ファイルを含む ZIP ファイルかフォルダーから読み込めます。</string>
+    <string name="game_details">%1$s · %2$s</string>
+    <string name="running">実行中</string>
+    <string name="play">プレイ</string>
+    <string name="resume">再開</string>
+
+    <string name="import_game">読み込む</string>
+    <string name="import_title">ゲームを読み込む</string>
     <string name="import_zip">ZIP を読み込む</string>
     <string name="import_folder">フォルダーを読み込む</string>
-    <string name="empty">ゲームがありません。ZIP ファイルかフォルダーからゲームを読み込んでください。</string>
+    <string name="import_zip_title">ZIP ファイル</string>
+    <string name="import_zip_summary">ルートに最も近い game.kagari と、その横のアーカイブ</string>
+    <string name="import_folder_title">フォルダー</string>
+    <string name="import_folder_summary">フォルダー直下の game.kagari と .kiarchive ファイル</string>
     <string name="importing">読み込み中…</string>
+    <string name="importing_name">%1$s を読み込み中…</string>
+    <string name="imported">%1$s を読み込みました</string>
     <string name="import_failed_title">ゲームを読み込めません</string>
     <string name="import_no_game">game.kagari が見つかりません。</string>
     <string name="import_not_kagari">game.kagari は Kagari のゲームではありません。</string>
     <string name="import_wrong_version">このゲームは Kagari バイトコード %1$s 用です。このシミュレーターは V000 を実行します。</string>
     <string name="import_io">ゲームの読み込みに失敗しました: %1$s</string>
+
     <string name="delete_title">%1$s を削除しますか?</string>
     <string name="delete_message">ゲームのファイルを削除します。セーブデータは残ります。</string>
+    <string name="delete_running">実行中のゲームは保存せずに終了します。</string>
     <string name="delete">削除</string>
+    <string name="deleted">%1$s を削除しました</string>
+
     <string name="game_failed_title">ゲームを実行できません</string>
 </resources>

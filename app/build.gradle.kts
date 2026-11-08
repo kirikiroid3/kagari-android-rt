@@ -4,11 +4,13 @@ import org.gradle.work.DisableCachingByDefault
 
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
     namespace = "club.suitsu31.kagari.simulator"
-    compileSdk = 36
+    // Compose UI 1.12 needs 37; targetSdk stays at 36.
+    compileSdk = 37
     // The only build-tools the (read-only, Nix-managed) SDK has.
     buildToolsVersion = "37.0.0"
     ndkVersion = "30.0.16248370"
@@ -27,6 +29,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -36,10 +39,26 @@ android {
         }
     }
 
+    // The app's own languages; drops the AndroidX translations into the ~80 others.
+    androidResources {
+        localeFilters += listOf("en", "ja")
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+    buildFeatures {
+        compose = true
+    }
+}
+
+dependencies {
+    implementation(platform("androidx.compose:compose-bom:2026.09.00"))
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.activity:activity-compose:1.13.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.11.0")
 }
 
 /** Builds `libkagari_android.so` for every ABI with cargo-ndk into [outputDir]. */

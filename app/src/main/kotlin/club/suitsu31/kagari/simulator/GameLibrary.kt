@@ -3,8 +3,11 @@ package club.suitsu31.kagari.simulator
 import java.io.File
 import java.util.UUID
 
-/** An imported game: [dir] holds `game.kagari` and its archives. */
-data class Game(val id: String, val name: String, val dir: File)
+/**
+ * An imported game: [dir] holds `game.kagari` and its archives, [size] bytes in all, imported at
+ * [importedAt] (epoch milliseconds).
+ */
+data class Game(val id: String, val name: String, val dir: File, val size: Long, val importedAt: Long)
 
 /**
  * The imported games in `filesDir/games/<id>/`: `name.txt` (the display name) and `files/`
@@ -19,8 +22,16 @@ class GameLibrary(private val filesDir: File, private val cacheDir: File) {
             .filter { it.isDirectory && !it.name.startsWith(".") }
             .filter { File(it, "files/$PROGRAM").isFile }
             .map { dir ->
-                val name = File(dir, NAME_FILE).takeIf { it.isFile }?.readText()?.trim()
-                Game(dir.name, if (name.isNullOrEmpty()) dir.name else name, File(dir, "files"))
+                val nameFile = File(dir, NAME_FILE)
+                val name = nameFile.takeIf { it.isFile }?.readText()?.trim()
+                val files = File(dir, "files")
+                Game(
+                    id = dir.name,
+                    name = if (name.isNullOrEmpty()) dir.name else name,
+                    dir = files,
+                    size = files.listFiles()?.sumOf { it.length() } ?: 0,
+                    importedAt = nameFile.lastModified(),
+                )
             }
             .sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name })
 
@@ -46,14 +57,15 @@ class GameLibrary(private val filesDir: File, private val cacheDir: File) {
         return staging
     }
 
-    /** Checks the staged `game.kagari` and moves the staging directory into the library. */
-    fun commit(staging: File, name: String) {
+    /** Checks the staged `game.kagari`, moves the staging directory into the library and returns the new game's id. */
+    fun commit(staging: File, name: String): String {
         checkHeader(File(staging, "files/$PROGRAM"))
         File(staging, NAME_FILE).writeText(name)
         val target = File(gamesDir, UUID.randomUUID().toString())
         if (!staging.renameTo(target)) {
             throw ImportException(R.string.import_io, "cannot move ${staging.name}")
         }
+        return target.name
     }
 
     /** A Kagari bytecode header this simulator runs: the magic and version `V000`. */
